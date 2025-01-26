@@ -34,8 +34,13 @@ public class TaskService {
         return taskRepository.save(existingTask);
     }
 
-    public void deleteTask(Long id) {
-        taskRepository.deleteById(id);
+    public boolean deleteTask(Long id) {
+        if (taskRepository.existsById(id)) {
+            taskRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
+
 
 }
