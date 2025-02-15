@@ -2,6 +2,7 @@ package com.example.todo_list_api.task;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.NotFound;
 
 import java.time.LocalDateTime;
 
