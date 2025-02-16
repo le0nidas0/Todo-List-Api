@@ -1,8 +1,7 @@
 package com.example.todo_list_api.task;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.NotFound;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 
@@ -26,12 +25,16 @@ public class Task {
     public Task() {
     }
 
-    public Task(Long id, String title, String description, TaskStatus status, LocalDateTime createdAt) {
+    public Task(Long id, String title, String description, TaskStatus status) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.status = status;
-        this.createdAt = createdAt;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
     }
 
     // Getters
